@@ -14,7 +14,28 @@ function hasTargetSum(array, target) {
   Add written explanation of your solution here
 */
 
-// You can run `node index.js` to view these console logs
+function hasTargetSum(arr, target) {
+  // Create a Set to store numbers we've seen so far
+  const seenNumbers = new Set();
+
+  // Iterate through the array
+  for (const num of arr) {
+    // Calculate the complement (the number needed to reach the target)
+    const complement = target - num;
+
+    // If the complement is in the Set, we found a pair that adds up to the target
+    if (seenNumbers.has(complement)) {
+      return true;
+    }
+
+    // Add the current number to the Set
+    seenNumbers.add(num);
+  }
+
+  // If no pair is found, return false
+  return false;
+}
+
 if (require.main === module) {
   // add your own custom tests in here
   console.log("Expecting: true");
@@ -32,3 +53,5 @@ if (require.main === module) {
 }
 
 module.exports = hasTargetSum;
+
+
